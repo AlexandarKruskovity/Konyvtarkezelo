@@ -1,0 +1,85 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 2rem;
+    background: #709aee;
+    color: #1f2937;
+
+}
+
+h1 {
+    margin-bottom: 1.5rem;
+}
+
+
+
+.input {
+    padding: 0.7rem 0.8rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    width: 300px;
+    background-color: #004fee;
+
+}
+
+.gomb
+{
+    background-color: rgb(191, 157, 253);
+    border-radius: 20px;
+    width: fit-content;
+    height: 50px;
+
+}
+#addBookButton {
+    background-color: #05b60e;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+
+}
+
+#addBookButton:hover {
+    background-color: #026a07;
+}
+ .book-table {
+            width: 100%;
+            max-width: 900px;
+            border-collapse: collapse;
+            background: white;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .book-table th,
+        .book-table td {
+            border: 1px solid #dbe3ee;
+            padding: 0.75rem 0.9rem;
+            text-align: left;
+        }
+
+        .book-table thead th {
+            background: #e2e8f0;
+            font-weight: 700;
+        }
+
+        .book-table tbody tr:nth-child(even) {
+            background: #f8fafc;
+        }
+
+        .book-table tbody tr:hover {
+            background: #eef6ff;
+        }
+
+        .actions {
+            white-space: nowrap;
+        }
+
+        .actions button {
+            margin-right: 0.35rem;
+            padding: 0.45rem 0.7rem;
+            font-size: 0.9rem;
+        }

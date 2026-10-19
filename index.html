@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Könyvtárkezelő</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <center>
+        <div class="input">
+            <h1>Könyvtárkezelő</h1>
+            <p><input type="text" placeholder="Cím" id="cimInput"></p>
+            <p><input type="text" placeholder="Szerző" id="szerzoInput"></p>
+            <p><input type="text" placeholder="Kiadási év" id="evInput"></p>
+            <p><input type="text" placeholder="Oldalszám" id="oldalInput"></p>
+            <p><button class="gomb" id="hozzaadasGomb">Könyv hozzáadása</button></p>
+        </div>
+    </center>
+    <p></p>
+    <center>
+    <div id="gombok">
+    <p>
+        <button  class="gomb" id="osszesKonyv">Összes Könyv</button>
+        <button class="gomb" id="szabadKonyvek">Szabad Könyvek</button>
+        <button class="gomb" id="legregibbKonyv">Legrégebbi Könyv</button>
+        <button class="gomb" id="legvastagabbKonyv">Legvastagabb Könyv</button>
+        <button class="gomb" id="atlagosOldalszam">Átlagos Oldalszám</button>
+    </p>
+    </center>
+</div>
+    <table class="book-table" aria-label="Könyvtárkezelés"
+        style="width: 80%; margin: auto; border-collapse: collapse; border: 1px solid #ccc;">
+        <thead>
+            <tr>
+                <th>Cím</th>
+                <th>Szerző</th>
+                <th>Kiadási év</th>
+                <th>Oldalak</th>
+                <th>Kölcsönözve</th>
+            </tr>
+        </thead>
+        <tbody class="book-table-body" id="book-table-body">
+
+
+        </tbody>
+    </table>
+
+
+
+
+
+
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>
