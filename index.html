@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hu">
 
 <head>
     <meta charset="UTF-8">
@@ -11,28 +11,30 @@
 </head>
 
 <body>
-    <center>
+    <h1>Könyvtárkezelő</h1>
         <div class="input">
-            <h1>Könyvtárkezelő</h1>
+            <h2>Új könyvfelvétele</h2>
             <p><input type="text" placeholder="Cím" id="cimInput"></p>
             <p><input type="text" placeholder="Szerző" id="szerzoInput"></p>
             <p><input type="text" placeholder="Kiadási év" id="evInput"></p>
             <p><input type="text" placeholder="Oldalszám" id="oldalInput"></p>
             <p><button class="gomb" id="hozzaadasGomb">Könyv hozzáadása</button></p>
         </div>
-    </center>
+   
     <p></p>
-    <center>
+    
     <div id="gombok">
     <p>
+        <h2>Szűrés</h2>
         <button  class="gomb" id="osszesKonyv">Összes Könyv</button>
         <button class="gomb" id="szabadKonyvek">Szabad Könyvek</button>
-        <button class="gomb" id="legregibbKonyv">Legrégebbi Könyv</button>
+        <button class="gomb" id="legregebbiKonyv">Legrégebbi Könyv</button>
         <button class="gomb" id="legvastagabbKonyv">Legvastagabb Könyv</button>
         <button class="gomb" id="atlagosOldalszam">Átlagos Oldalszám</button>
     </p>
-    </center>
+<h2>Könyvtárad</h2>
 </div>
+
     <table class="book-table" aria-label="Könyvtárkezelés"
         style="width: 80%; margin: auto; border-collapse: collapse; border: 1px solid #ccc;">
         <thead>
@@ -42,6 +44,7 @@
                 <th>Kiadási év</th>
                 <th>Oldalak</th>
                 <th>Kölcsönözve</th>
+                <th>Kölcsönzés vagy Visszahozás</th>
             </tr>
         </thead>
         <tbody class="book-table-body" id="book-table-body">
@@ -50,6 +53,7 @@
         </tbody>
     </table>
 
+    
 
 
 

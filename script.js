@@ -43,12 +43,12 @@ function tablazatfeltoltese() {
             <td>${konyv.kolcsonozve ? "Igen" : "Nem"}</td>
             <td class="actions">
                 <button onclick="konyvKolcsonzes(${index})"
-                    ${konyv.kolcsonozve ? "disabled" : ""}>
+                    ${konyv.kolcsonozve}>
                     Kölcsönöz
                 </button>
 
                 <button onclick="konyvVisszahozatal(${index})"
-                    ${!konyv.kolcsonozve ? "disabled" : ""}>
+                    ${!konyv.kolcsonozve}>
                     Visszahoz
                 </button>
             </td>
@@ -87,7 +87,7 @@ function konyvKolcsonzes(index) {
             throw new Error("Ez a könyv már ki van kölcsönözve!");
         }
         Konyvek[index].kolcsonozve = true;
-        tablazatfeltoltese(); 
+        tablazatfeltoltese();
         alert(`A(z) "${Konyvek[index].cim}" sikeresen kikölcsönözve!`);
     } catch (error) {
         alert(error.message);
@@ -100,7 +100,7 @@ function konyvVisszahozatal(index) {
             throw new Error("Ez a könyv nem volt kikölcsönözve!");
         }
         Konyvek[index].kolcsonozve = false;
-        tablazatfeltoltese(); 
+        tablazatfeltoltese();
         alert(`A(z) "${Konyvek[index].cim}" sikeresen visszahozva!`);
     } catch (error) {
         alert(error.message);
@@ -108,7 +108,7 @@ function konyvVisszahozatal(index) {
 }
 
 
-document.getElementById("osszesKonyv").addEventListener("click", function() {
+document.getElementById("osszesKonyv").addEventListener("click", function () {
     let osszes = Konyvek
 
     document.getElementById("book-table-body").innerHTML = osszes.map((konyv) => `
@@ -128,24 +128,9 @@ document.getElementById("osszesKonyv").addEventListener("click", function() {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-document.getElementById("szabadKonyvek").addEventListener("click",function()
-{
-    let elerheto=Konyvek.filter(konyv=>konyv.kolcsonozve===false)
-    document.getElementById("book-table-body").innerHTML=elerheto.map((konyv)=>`
+document.getElementById("szabadKonyvek").addEventListener("click", function () {
+    let elerheto = Konyvek.filter(konyv => konyv.kolcsonozve === false)
+    document.getElementById("book-table-body").innerHTML = elerheto.map((konyv) => `
         <tr>
             <td>${konyv.cim}</td>
             <td>${konyv.szerzo}</td>
@@ -158,5 +143,70 @@ document.getElementById("szabadKonyvek").addEventListener("click",function()
 
 
 })
+
+
+document.getElementById("legregebbiKonyv").addEventListener("click", function () {
+    let legregebbi = Konyvek[0];
+
+    Konyvek.forEach(function (konyv) {
+        if (konyv.kiadasiEv < legregebbi.kiadasiEv) {
+            legregebbi = konyv;
+        }
+    });
+
+    document.getElementById("book-table-body").innerHTML = `
+        <tr>
+            <td>${legregebbi.cim}</td>
+            <td>${legregebbi.szerzo}</td>
+            <td>${legregebbi.kiadasiEv}</td>
+            <td>${legregebbi.oldalszam}</td>
+            <td>${legregebbi.kolcsonozve ? "Igen" : "Nem"}</td>
+        </tr>`;
+});
+
+document.getElementById("legvastagabbKonyv").addEventListener("click", function () {
+
+    let legvastagabb = Konyvek[0]
+    Konyvek.forEach(function (konyv) {
+        if (konyv.oldalszam > legvastagabb.oldalszam) {
+            legvastagabb = konyv
+        }
+        document.getElementById("book-table-body").innerHTML = `
+        <tr>
+            <td>${legvastagabb.cim}</td>
+            <td>${legvastagabb.szerzo}</td>
+            <td>${legvastagabb.kiadasiEv}</td>
+            <td>${legvastagabb.oldalszam}</td>
+            <td>${legvastagabb.kolcsonozve ? "Igen" : "Nem"}</td>
+        </tr>`;
+
+
+    })
+
+})
+
+document.getElementById("atlagosOldalszam").addEventListener("click", function () {
+let osszes=0
+Konyvek.forEach(function(konyv)
+{
+    osszes+=Number(konyv.oldalszam)
+})
+let atlag=osszes/Konyvek.length
+alert("Az átlagos oldalszám:"+atlag+" "+"oldal")
+
+
+
+
+
+
+
+})
+
+
+
+
+
+
+
 
 

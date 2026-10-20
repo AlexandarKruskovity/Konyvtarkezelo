@@ -1,85 +1,208 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 2rem;
-    background: #709aee;
-    color: #1f2937;
 
+
+body {
+    margin: 0;
+    padding: 36px 5vw 64px;
+    background: #eaf5ff;
+    color: #27344a;
+    font-family: "Trebuchet MS", Arial, sans-serif;
 }
 
 h1 {
-    margin-bottom: 1.5rem;
+    width: min(900px, 100%);
+    margin: 0 auto 24px;
+    color: #304e9a;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 2.8rem;
+    font-weight: 700;
+    text-align: center;
+    text-shadow: 2px 3px 0 #cddcff;
 }
-
-
 
 .input {
-    padding: 0.7rem 0.8rem;
-    border: 1px solid #cbd5e1;
-    border-radius: 8px;
-    width: 300px;
-    background-color: #004fee;
-
+    width: min(440px, 100%);
+    margin: 0 auto 30px;
+    padding: 20px 24px;
+    border: 2px solid #cbdcff;
+    border-radius: 18px 18px 18px 6px;
+    background: #fff;
+    box-shadow: 6px 7px 0 #d4e3ff;
 }
 
-.gomb
-{
-    background-color: rgb(191, 157, 253);
-    border-radius: 20px;
-    width: fit-content;
-    height: 50px;
-
+.input h2 {
+    margin: 0 0 16px;
+    color: #425da4;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1.45rem;
 }
-#addBookButton {
-    background-color: #05b60e;
-    border: none;
-    color: white;
-    padding: 10px 20px;
+h2{
+    margin: 0 0 16px;
+    color: #425da4;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1.45rem;}
+
+.input p {
+    margin: 10px 0;
+}
+
+.input input {
+    width: 100%;
+    min-height: 43px;
+    padding: 9px 12px;
+    border: 2px solid #e1e8f4;
+    border-radius: 10px;
+    outline: none;
+    background: #fbfdff;
+    color: #27344a;
+    font: inherit;
+}
+
+.input input:focus {
+    border-color: #829ce5;
+    box-shadow: 0 0 0 3px #e7edff;
+}
+
+.gomb {
+    min-height: 42px;
+    padding: 9px 15px;
+    border: 2px solid #9faee5;
+    border-radius: 999px;
+    background: #e8eaff;
+    color: #3d4f91;
+    font: inherit;
+    font-size: 0.9rem;
+    font-weight: 700;
+    
+}
+
+.gomb:hover {
+    transform: translateY(-2px) rotate(-1deg);
+    background: #d9ddff;
+    box-shadow: 0 4px 0 #bcc5ef;
+}
+
+.gomb:active {
+    transform: translateY(1px);
+    box-shadow: none;
+}
+
+#hozzaadasGomb {
+    border-color: #e77b60;
+    background: #ff9477;
+    color: #542d2b;
+}
+
+#hozzaadasGomb:hover {
+    background: #ff8062;
+    box-shadow: 0 4px 0 #e6b1a3;
+}
+
+#gombok {
+    width: min(1120px, 100%);
+    margin: 0 auto 12px;
     text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
+}
+
+#gombok p {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 9px;
+}
+
+#atlag {
+    width: fit-content;
+    margin: 18px auto;
+    padding: 10px 16px;
+    border-radius: 12px;
+    background: #fff1c9;
+    color: #69512b;
+}
+
+.book-table {
+    width: 80%;
+    max-width: 1120px;
+    margin: 0 auto;
+    border-collapse: separate;
+    border-spacing: 0;
+    overflow: hidden;
+    border: 2px solid #d6e2f6;
+    border-radius: 14px;
+    background: #fff;
+    box-shadow: 5px 6px 0 #d5e5f5;
+}
+
+.book-table th,
+.book-table td {
+    padding: 13px 15px;
+    border-bottom: 1px solid #e8edf5;
+    text-align: left;
+}
+
+.book-table thead th {
+    background: #dceaff;
+    color: #3d568a;
+    font-weight: 700;
+}
+
+.book-table tbody tr:nth-child(even) {
+    background: #f7f9ff;
+}
+
+.book-table tbody tr:hover {
+    background: #fff2e9;
+}
+
+.book-table tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+.actions {
+    white-space: nowrap;
+}
+
+.actions button {
+    margin: 3px;
+    padding: 7px 10px;
+    border: 1px solid #b6c5e8;
+    border-radius: 8px;
+    background: #f1f5ff;
+    color: #3d568a;
+    font-size: 0.85rem;
     cursor: pointer;
-
 }
 
-#addBookButton:hover {
-    background-color: #026a07;
+.actions button:hover {
+    background: #e3ebff;
 }
- .book-table {
-            width: 100%;
-            max-width: 900px;
-            border-collapse: collapse;
-            background: white;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-        }
 
-        .book-table th,
-        .book-table td {
-            border: 1px solid #dbe3ee;
-            padding: 0.75rem 0.9rem;
-            text-align: left;
-        }
+@media (max-width: 700px) {
+    body {
+        padding: 28px 16px 48px;
+    }
 
-        .book-table thead th {
-            background: #e2e8f0;
-            font-weight: 700;
-        }
+    h1 {
+        font-size: 2.25rem;
+    }
 
-        .book-table tbody tr:nth-child(even) {
-            background: #f8fafc;
-        }
+    .input {
+        padding: 18px;
+    }
 
-        .book-table tbody tr:hover {
-            background: #eef6ff;
-        }
+    #gombok p {
+        gap: 7px;
+    }
 
-        .actions {
-            white-space: nowrap;
-        }
+    .gomb {
+        min-height: 40px;
+        padding: 8px 12px;
+        font-size: 0.82rem;
+    }
 
-        .actions button {
-            margin-right: 0.35rem;
-            padding: 0.45rem 0.7rem;
-            font-size: 0.9rem;
-        }
+    .book-table {
+        width: 100%;
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+}
