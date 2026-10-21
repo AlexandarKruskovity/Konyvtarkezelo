@@ -1,8 +1,9 @@
-function Konyv(cim, szerzo, kiadasiEv, oldalszam, kolcsonozve, kolcsonoz, visszahoz) {
+function Konyv(cim, szerzo, kiadasiEv, oldalszam,kategoria, kolcsonozve, kolcsonoz, visszahoz) {
     this.cim = cim;
     this.szerzo = szerzo;
     this.kiadasiEv = kiadasiEv;
     this.oldalszam = oldalszam;
+    this.kategoria=kategoria
     this.kolcsonozve = kolcsonozve;
     this.kolcsonoz = kolcsonoz;
     this.visszahoz = visszahoz;
@@ -12,14 +13,16 @@ function Konyv(cim, szerzo, kiadasiEv, oldalszam, kolcsonozve, kolcsonoz, vissza
 }
 
 
-const egriCsillagok = new Konyv("Egri csillagok", "Gárdonyi Géza", 1901, 600, false);
-const toldi = new Konyv("Toldi", "Arany János", 1847, 120, false);
-const palUtcaifiuk = new Konyv("Pál utcai fiúk", "Molnár Ferenc", 1907, 240, false);
-const legyJoMindhalalig = new Konyv("Légy jó mindhalálig", "Móricz Zsigmond", 1920, 280, false);
-const aranyEmber = new Konyv("Az arany ember", "Jókai Mór", 1872, 450, false)
+const egriCsillagok = new Konyv("Egri csillagok", "Gárdonyi Géza", 1901, 600,"Történelmi regény", false);
+const toldi = new Konyv("Toldi", "Arany János", 1847, 120,"Elbeszélő költemény", false);
+const palUtcaifiuk = new Konyv("Pál utcai fiúk", "Molnár Ferenc", 1907, 240,"Regény", false);
+const legyJoMindhalalig = new Konyv("Légy jó mindhalálig", "Móricz Zsigmond", 1920, 280,"Regény",false);
+const aranyEmber = new Konyv("Az arany ember", "Jókai Mór", 1872, 450,"Regény", false)
+const harryPotter = new Konyv("Harry Potter és a bölcsek köve", "J. K. Rowling", 1997, 320, "Fantasy", false);
+const hobbit = new Konyv("A hobbit", "J. R. R. Tolkien", 1937, 310, "Fantasy, kalandregény", false);
 
 const Konyvek = [
-    egriCsillagok, toldi, palUtcaifiuk, legyJoMindhalalig, aranyEmber
+    egriCsillagok, toldi, palUtcaifiuk, legyJoMindhalalig, aranyEmber,harryPotter,hobbit
 ]
 
 
@@ -30,6 +33,7 @@ const cim = document.getElementById("cimInput")
 const szerzo = document.getElementById("szerzoInput")
 const kiadas = document.getElementById("evInput")
 const oldal = document.getElementById("oldalInput")
+const kategoria=document.getElementById("kategoriaInput")
 
 
 
@@ -40,6 +44,7 @@ function tablazatfeltoltese() {
             <td>${konyv.szerzo}</td>
             <td>${konyv.kiadasiEv}</td>
             <td>${konyv.oldalszam}</td>
+            <td>${konyv.kategoria}</td>
             <td>${konyv.kolcsonozve ? "Igen" : "Nem"}</td>
             <td class="actions">
                 <button onclick="konyvKolcsonzes(${index})"
@@ -51,6 +56,7 @@ function tablazatfeltoltese() {
                     ${!konyv.kolcsonozve}>
                     Visszahoz
                 </button>
+                <button class="torles" onclick="torles(event)">Törlés</button>
             </td>
         </tr>
     `).join("");
@@ -64,6 +70,7 @@ hozzaadasGomb.addEventListener("click", function () {
             szerzo: szerzo.value,
             kiadasiEv: kiadas.value,
             oldalszam: oldal.value,
+            kategoria:kategoria.value,
             kolcsonozve: false
         })
 
@@ -73,6 +80,7 @@ hozzaadasGomb.addEventListener("click", function () {
         szerzo.value = ""
         kiadas.value = ""
         oldal.value = ""
+        kategoria.value=""
 
 
     }
@@ -117,6 +125,7 @@ document.getElementById("osszesKonyv").addEventListener("click", function () {
             <td>${konyv.szerzo}</td>
             <td>${konyv.kiadasiEv}</td>
             <td>${konyv.oldalszam}</td>
+            <td>${konyv.kategoria}</td>
             <td>${konyv.kolcsonozve ? "Igen" : "Nem"}</td>
             <td>
                 <button onclick="konyvKolcsonzes(${Konyvek.indexOf(konyv)})">Kölcsönöz</button>
@@ -136,6 +145,7 @@ document.getElementById("szabadKonyvek").addEventListener("click", function () {
             <td>${konyv.szerzo}</td>
             <td>${konyv.kiadasiEv}</td>
             <td>${konyv.oldalszam}</td>
+            <td>${konyv.kategoria}</td>
             <td>${konyv.kolcsonozve ? "Igen" : "Nem"}</td>
         
                </tr>`).join("");
@@ -160,6 +170,7 @@ document.getElementById("legregebbiKonyv").addEventListener("click", function ()
             <td>${legregebbi.szerzo}</td>
             <td>${legregebbi.kiadasiEv}</td>
             <td>${legregebbi.oldalszam}</td>
+            <td>${legregebbi.kategoria}</td>
             <td>${legregebbi.kolcsonozve ? "Igen" : "Nem"}</td>
         </tr>`;
 });
@@ -177,6 +188,7 @@ document.getElementById("legvastagabbKonyv").addEventListener("click", function 
             <td>${legvastagabb.szerzo}</td>
             <td>${legvastagabb.kiadasiEv}</td>
             <td>${legvastagabb.oldalszam}</td>
+            <td>${legvastagabb.kategoria}</td>
             <td>${legvastagabb.kolcsonozve ? "Igen" : "Nem"}</td>
         </tr>`;
 
@@ -193,17 +205,23 @@ Konyvek.forEach(function(konyv)
 })
 let atlag=osszes/Konyvek.length
 alert("Az átlagos oldalszám:"+atlag+" "+"oldal")
-
-
-
-
-
-
-
 })
 
 
+function torles(e) {
+    e.stopPropagation();
 
+    if (e.target.classList.contains("torles")) {
+        let sor = e.target.closest("tr");
+        let sorIndex = sor.rowIndex - 1;
+
+        Konyvek.splice(sorIndex, 1);
+
+        tablazatfeltoltese();
+
+        alert("A könyv törölve!");
+    }
+}
 
 
 
